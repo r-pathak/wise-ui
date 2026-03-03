@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "wise-ui",
+  "homepage": "https://wise-ui.com",
+  "items": [
+    {
+      "name": "editable-text",
+      "type": "registry:component",
+      "title": "Editable Text",
+      "description": "Inline editable text with animated border reveal, shimmer effect, and smooth save/cancel controls.",
+      "dependencies": [
+        "motion",
+        "@tabler/icons-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/wise-ui/components/editable-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}
