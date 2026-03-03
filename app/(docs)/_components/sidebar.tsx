@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "motion/react"
 
 const components = [
   { name: "editable-text", title: "Editable Text" },
+  { name: "moving-gradient-button", title: "Moving Gradient Button" },
 ]
 
 export function Sidebar() {

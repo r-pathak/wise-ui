@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, IBM_Plex_Mono } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -8,10 +8,9 @@ const cormorantGaramond = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${cormorantGaramond.variable} ${ibmPlexMono.variable} ${ibmPlexMono.className} antialiased`}
+        className={`${cormorantGaramond.variable} ${inter.variable} ${inter.className} antialiased`}
       >
         {children}
       </body>

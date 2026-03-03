@@ -20,6 +20,23 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "moving-gradient-button",
+      "type": "registry:component",
+      "title": "Moving Gradient Button",
+      "description": "A button that reveals a spinning gradient border and flowing gradient text on hover.",
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/wise-ui/components/moving-gradient-button.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

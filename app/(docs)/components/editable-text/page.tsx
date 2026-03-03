@@ -4,12 +4,38 @@ import * as React from "react"
 import { EditableText } from "@/registry/wise-ui/components/editable-text"
 import { ComponentPage } from "../../_components/component-page"
 
-const usageCode = `import { EditableText } from "@/components/ui/editable-text"
+const usageCode = `import * as React from "react"
+import { EditableText } from "@/components/ui/editable-text"
 
 export default function Example() {
-  const [name, setName] = React.useState("John Doe")
+  const [heading, setHeading] = React.useState("Click me to edit")
+  const [body, setBody] = React.useState(
+    "Hover to see the shimmer, click to edit, Enter to save, Escape to cancel."
+  )
+  const [small, setSmall] = React.useState("Small inline text")
 
-  return <EditableText value={name} onChange={setName} />
+  return (
+    <div className="flex flex-col gap-6">
+      <EditableText
+        value={heading}
+        onChange={setHeading}
+        className="text-xl font-semibold text-foreground"
+      />
+      <EditableText
+        value={body}
+        onChange={setBody}
+        className="text-sm text-muted-foreground"
+      />
+      <div className="flex items-center gap-2 pl-2 text-sm text-muted-foreground">
+        <span>Author:</span>
+        <EditableText
+          value={small}
+          onChange={setSmall}
+          className="text-foreground"
+        />
+      </div>
+    </div>
+  )
 }`
 
 const manualSource = `"use client"
