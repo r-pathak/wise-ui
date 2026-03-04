@@ -13,7 +13,8 @@
       "WebFetch(domain:www.letras.mus.br)",
       "WebFetch(domain:www.letras.com)",
       "Bash(curl:*)",
-      "Bash(sips:*)"
+      "Bash(sips:*)",
+      "WebFetch(domain:wise-ui.com)"
     ]
   }
 }

@@ -4,21 +4,113 @@
   "homepage": "https://wise-ui.com",
   "items": [
     {
+      "name": "animated-tabs",
+      "type": "registry:component",
+      "title": "Animated Tabs",
+      "description": "Tabs with smooth animated indicator transitions.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/animated-tabs.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:component",
+      "title": "Border Beam",
+      "description": "A card with an animated beam traveling along its border.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/border-beam.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:component",
+      "title": "Data Table",
+      "description": "A fully-featured, animated data table with sorting, search, selection, inline editing, column resizing, and pagination.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/data-table.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "dock",
+      "type": "registry:component",
+      "title": "Dock",
+      "description": "A macOS-style dock with magnification effect on hover.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/dock.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "dot-matrix",
+      "type": "registry:component",
+      "title": "Dot Matrix",
+      "description": "An animated dot matrix background pattern.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/dot-matrix.tsx", "type": "registry:component" }
+      ]
+    },
+    {
       "name": "editable-text",
       "type": "registry:component",
       "title": "Editable Text",
       "description": "Inline editable text with animated border reveal, shimmer effect, and smooth save/cancel controls.",
-      "dependencies": [
-        "motion",
-        "@tabler/icons-react",
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["motion", "@tabler/icons-react", "clsx", "tailwind-merge"],
       "files": [
-        {
-          "path": "registry/wise-ui/components/editable-text.tsx",
-          "type": "registry:component"
-        }
+        { "path": "registry/wise-ui/components/editable-text.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "gradient-sidebar",
+      "type": "registry:component",
+      "title": "Gradient Sidebar",
+      "description": "A sidebar with animated gradient orb background and collapsible sections.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/gradient-sidebar.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "kanban-board",
+      "type": "registry:component",
+      "title": "Kanban Board",
+      "description": "A drag-and-drop kanban board with collapsible columns and animated card transitions.",
+      "dependencies": ["@dnd-kit/core", "@dnd-kit/sortable", "@dnd-kit/utilities", "motion", "clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/kanban-board.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "magnetic-button",
+      "type": "registry:component",
+      "title": "Magnetic Button",
+      "description": "A button that magnetically attracts toward the cursor on hover.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/magnetic-button.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "marquee",
+      "type": "registry:component",
+      "title": "Marquee",
+      "description": "An infinite scrolling marquee with configurable speed and direction.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/marquee.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "metallic-lava",
+      "type": "registry:component",
+      "title": "Metallic Lava",
+      "description": "An animated metallic lava background using WebGL shaders.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/metallic-lava.tsx", "type": "registry:component" }
       ]
     },
     {
@@ -26,16 +118,89 @@
       "type": "registry:component",
       "title": "Moving Gradient Button",
       "description": "A button that reveals a spinning gradient border and flowing gradient text on hover.",
-      "dependencies": [
-        "motion",
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
-        {
-          "path": "registry/wise-ui/components/moving-gradient-button.tsx",
-          "type": "registry:component"
-        }
+        { "path": "registry/wise-ui/components/moving-gradient-button.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "moving-gradient-text",
+      "type": "registry:component",
+      "title": "Moving Gradient Text",
+      "description": "Text with a continuously flowing gradient animation.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/moving-gradient-text.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "nebula",
+      "type": "registry:component",
+      "title": "Nebula",
+      "description": "An animated nebula cloud background using WebGL shaders.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/nebula.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "pulse-button",
+      "type": "registry:component",
+      "title": "Pulse Button",
+      "description": "A button with a pulsing glow animation.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/pulse-button.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "reorderable-list",
+      "type": "registry:component",
+      "title": "Reorderable List",
+      "description": "A drag-and-drop sortable list with smooth animations.",
+      "dependencies": ["@dnd-kit/core", "@dnd-kit/sortable", "@dnd-kit/utilities", "clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/reorderable-list.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "ripple",
+      "type": "registry:component",
+      "title": "Ripple",
+      "description": "A ripple effect animation on click.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/ripple.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "scramble-text",
+      "type": "registry:component",
+      "title": "Scramble Text",
+      "description": "Text that scrambles through random characters before resolving.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/scramble-text.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "spotlight-card",
+      "type": "registry:component",
+      "title": "Spotlight Card",
+      "description": "A card with a spotlight effect that follows the cursor.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/spotlight-card.tsx", "type": "registry:component" }
+      ]
+    },
+    {
+      "name": "tilt-card",
+      "type": "registry:component",
+      "title": "Tilt Card",
+      "description": "A card that tilts toward the cursor with a 3D perspective effect.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/wise-ui/components/tilt-card.tsx", "type": "registry:component" }
       ]
     }
   ]
