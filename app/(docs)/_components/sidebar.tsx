@@ -202,7 +202,7 @@ export function Sidebar({ children }: { children?: React.ReactNode }) {
                 </svg>
               </a>
               <a
-                href="https://github.com/r-pathak"
+                href="https://github.com/r-pathak/wise-ui"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground transition-colors hover:text-foreground"
