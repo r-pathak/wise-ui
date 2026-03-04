@@ -29,7 +29,7 @@ export function ComponentPage({
 }: ComponentPageProps) {
   return (
     <div className="min-h-screen bg-background p-8 pt-16">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-6xl">
         <h1 className="text-2xl font-bold text-foreground">{name}</h1>
         <p className="mt-1 text-muted-foreground" style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}>{description}</p>
 

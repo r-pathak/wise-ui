@@ -38,7 +38,20 @@ export default function Example() {
   )
 }`
 
-const manualSource = `"use client"
+const manualSource = `# Install dependencies
+npm install motion @tabler/icons-react clsx tailwind-merge
+
+# Add the cn utility to lib/utils.ts (skip if already set up)
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
+# Create components/ui/editable-text.tsx
+
+"use client"
 
 import * as React from "react"
 import { motion } from "motion/react"
@@ -206,19 +219,19 @@ const editableTextProps = [
   {
     name: "value",
     type: "string",
-    default: "—",
+    default: "-",
     description: "The controlled text value.",
   },
   {
     name: "onChange",
     type: "(value: string) => void",
-    default: "—",
+    default: "-",
     description: "Callback fired when the user saves edited text.",
   },
   {
     name: "className",
     type: "string",
-    default: "—",
+    default: "-",
     description: "Additional CSS classes applied to the wrapper. Font styles are inherited by the input.",
   },
   {

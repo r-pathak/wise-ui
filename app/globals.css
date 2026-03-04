@@ -49,6 +49,7 @@
 :root {
   --radius: 0.625rem;
   --background: #E8F1F2;
+  --background-rgb: 232,241,242;
   --foreground: #2A2B2E;
   --card: #F2F7F8;
   --card-foreground: #2A2B2E;
@@ -83,6 +84,7 @@
 
 .dark {
   --background: #1E1F22;
+  --background-rgb: 30,31,34;
   --foreground: #E8F1F2;
   --card: #353639;
   --card-foreground: #E8F1F2;

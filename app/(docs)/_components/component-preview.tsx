@@ -25,7 +25,7 @@ export function ComponentPreview({ children, code }: ComponentPreviewProps) {
         <TabsTrigger value="code">Code</TabsTrigger>
       </TabsList>
       <TabsContent value="preview">
-        <div className="rounded-lg border border-border bg-card p-8">
+        <div className="rounded-lg border border-border bg-card p-6">
           {children}
         </div>
       </TabsContent>

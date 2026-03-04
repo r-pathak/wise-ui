@@ -39,7 +39,20 @@ export default function Example() {
   )
 }`
 
-const manualSource = `"use client"
+const manualSource = `# Install dependencies
+npm install motion clsx tailwind-merge
+
+# Add the cn utility to lib/utils.ts (skip if already set up)
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
+# Create components/ui/moving-gradient-button.tsx
+
+"use client"
 
 import * as React from "react"
 import { motion, useMotionValue, useTransform, animate } from "motion/react"
@@ -209,19 +222,19 @@ const movingGradientButtonProps = [
   {
     name: "startIcon",
     type: "React.ReactNode",
-    default: "—",
+    default: "-",
     description: "Icon rendered before the label. Transitions to gradientFrom color on hover.",
   },
   {
     name: "endIcon",
     type: "React.ReactNode",
-    default: "—",
+    default: "-",
     description: "Icon rendered after the label. Transitions to gradientTo color on hover.",
   },
   {
     name: "children",
     type: "React.ReactNode",
-    default: "—",
+    default: "-",
     description: "Button label content.",
   },
 ]

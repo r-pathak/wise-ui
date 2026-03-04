@@ -86,7 +86,7 @@ const EditableText = React.forwardRef<HTMLDivElement, EditableTextProps>(
       >
         {isEditing ? (
           <div className="relative inline-flex items-center">
-            {/* Input with animated border — same width as display text */}
+            {/* Input with animated border - same width as display text */}
             <div className="relative">
               <motion.div
                 className="pointer-events-none absolute inset-0 rounded-md border border-neutral-400"
@@ -110,7 +110,7 @@ const EditableText = React.forwardRef<HTMLDivElement, EditableTextProps>(
               />
             </div>
 
-            {/* Save / Cancel — positioned outside layout flow */}
+            {/* Save / Cancel - positioned outside layout flow */}
             <div className="absolute left-full ml-1.5 flex items-center gap-0.5">
               <motion.button
                 type="button"
@@ -170,7 +170,7 @@ const EditableText = React.forwardRef<HTMLDivElement, EditableTextProps>(
               )}
             </span>
 
-            {/* Edit icon — slides out from the right */}
+            {/* Edit icon - slides out from the right */}
             <motion.span
               className="inline-flex items-center overflow-hidden text-muted-foreground"
               initial={false}

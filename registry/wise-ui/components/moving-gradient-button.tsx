@@ -53,7 +53,7 @@ const MovingGradientButton = React.forwardRef<
       }
     }, [isHovered, animateBorder, animateText, disabled, rotation])
 
-    // Shift –100% per 360° — with backgroundRepeat:"repeat" this scrolls
+    // Shift –100% per 360° - with backgroundRepeat:"repeat" this scrolls
     // the from→to→from gradient infinitely without any visible seam
     const backgroundPosition = useTransform(
       rotation,
@@ -72,13 +72,13 @@ const MovingGradientButton = React.forwardRef<
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Static border — visible at rest */}
+        {/* Static border - visible at rest */}
         <div
           className="pointer-events-none absolute inset-0 rounded-md border border-border transition-opacity duration-300"
           style={{ opacity: showBorderAnimation ? 0 : 1 }}
         />
 
-        {/* Spinning conic gradient — visible on hover */}
+        {/* Spinning conic gradient - visible on hover */}
         <div
           className="pointer-events-none absolute inset-0 overflow-hidden rounded-md transition-opacity duration-300"
           style={{ opacity: showBorderAnimation ? 1 : 0 }}

@@ -11,11 +11,12 @@ export default function DocsLayout({
 }) {
   return (
     <ThemeProvider>
-      <Sidebar />
+      <Sidebar>
+        {children}
+      </Sidebar>
       <div className="fixed right-4 top-4 z-50">
         <ThemeToggle />
       </div>
-      <main>{children}</main>
     </ThemeProvider>
   )
 }
