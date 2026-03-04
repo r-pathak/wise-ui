@@ -1,0 +1,308 @@
+"use client"
+
+import * as React from "react"
+import { DotMatrix } from "@/registry/wise-ui/components/dot-matrix"
+import { ComponentPage } from "../../_components/component-page"
+
+const usageCode = `import { DotMatrix } from "@/components/ui/dot-matrix"
+
+export default function DotMatrixDemo() {
+  return (
+    <div className="space-y-8">
+      <DotMatrix className="h-64 w-full rounded-xl border border-border">
+        <div className="flex h-64 items-center justify-center">
+          <h2 className="text-2xl font-bold text-foreground">Move your mouse</h2>
+        </div>
+      </DotMatrix>
+
+      <DotMatrix
+        color="#6b6b6b"
+        activeColor="#a855f7"
+        influence={120}
+        className="h-48 w-full rounded-xl border border-border"
+      >
+        <div className="flex h-48 items-center justify-center">
+          <p className="text-sm text-muted-foreground">Purple glow on hover</p>
+        </div>
+      </DotMatrix>
+
+      <DotMatrix
+        gap={40}
+        dotSize={3}
+        color="#6b6b6b"
+        activeColor="#22c55e"
+        maxScale={4}
+        className="h-48 w-full rounded-xl border border-border"
+      >
+        <div className="flex h-48 items-center justify-center">
+          <p className="text-sm text-muted-foreground">Larger gap, bigger dots</p>
+        </div>
+      </DotMatrix>
+    </div>
+  )
+}`
+
+const manualSource = `# Install dependencies
+npm install clsx tailwind-merge
+
+# Add the cn utility to lib/utils.ts (skip if already set up)
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
+# Create components/ui/dot-matrix.tsx
+
+"use client"
+
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+interface DotMatrixProps extends React.HTMLAttributes<HTMLDivElement> {
+  gap?: number
+  dotSize?: number
+  color?: string
+  activeColor?: string
+  influence?: number
+  maxScale?: number
+}
+
+function parseColor(color: string): [number, number, number] | null {
+  const ctx = typeof document !== "undefined"
+    ? document.createElement("canvas").getContext("2d")
+    : null
+  if (!ctx) return null
+  ctx.fillStyle = color
+  ctx.fillRect(0, 0, 1, 1)
+  const d = ctx.getImageData(0, 0, 1, 1).data
+  return [d[0], d[1], d[2]]
+}
+
+const DotMatrix = React.forwardRef<HTMLDivElement, DotMatrixProps>(
+  (
+    {
+      gap = 24,
+      dotSize = 2,
+      color = "currentColor",
+      activeColor,
+      influence = 100,
+      maxScale = 3,
+      className,
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    const canvasRef = React.useRef<HTMLCanvasElement>(null)
+    const containerRef = React.useRef<HTMLDivElement>(null)
+    const mouseRef = React.useRef({ x: -9999, y: -9999 })
+
+    React.useImperativeHandle(ref, () => containerRef.current!)
+
+    React.useEffect(() => {
+      const canvas = canvasRef.current
+      const container = containerRef.current
+      if (!canvas || !container) return
+
+      const ctx = canvas.getContext("2d")
+      if (!ctx) return
+
+      let w = 0
+      let h = 0
+      let rafId = 0
+      let baseRgb: [number, number, number] = [128, 128, 128]
+      let activeRgb: [number, number, number] = [128, 128, 128]
+
+      function resolveColors() {
+        const computed = getComputedStyle(container!)
+        const resolvedColor = color === "currentColor" ? computed.color : color
+        const resolvedActive = activeColor
+          ? (activeColor === "currentColor" ? computed.color : activeColor)
+          : resolvedColor
+        baseRgb = parseColor(resolvedColor) ?? [128, 128, 128]
+        activeRgb = parseColor(resolvedActive) ?? baseRgb
+      }
+
+      function resize() {
+        const rect = container!.getBoundingClientRect()
+        const dpr = Math.min(window.devicePixelRatio, 2)
+        w = rect.width
+        h = rect.height
+        canvas!.width = w * dpr
+        canvas!.height = h * dpr
+        canvas!.style.width = \\\`\\\${w}px\\\`
+        canvas!.style.height = \\\`\\\${h}px\\\`
+        ctx!.setTransform(dpr, 0, 0, dpr, 0, 0)
+        resolveColors()
+      }
+
+      function draw() {
+        ctx!.clearRect(0, 0, w, h)
+        const mx = mouseRef.current.x
+        const my = mouseRef.current.y
+        const inf2 = influence * influence
+
+        for (let x = gap / 2; x < w; x += gap) {
+          for (let y = gap / 2; y < h; y += gap) {
+            const dx = x - mx
+            const dy = y - my
+            const dist2 = dx * dx + dy * dy
+            const t = dist2 < inf2 ? 1 - Math.sqrt(dist2) / influence : 0
+            const s = dotSize * (1 + (maxScale - 1) * t)
+
+            const r = Math.round(baseRgb[0] + (activeRgb[0] - baseRgb[0]) * t)
+            const g = Math.round(baseRgb[1] + (activeRgb[1] - baseRgb[1]) * t)
+            const b = Math.round(baseRgb[2] + (activeRgb[2] - baseRgb[2]) * t)
+            const alpha = 0.3 + 0.7 * t
+
+            ctx!.fillStyle = \\\`rgba(\\\${r},\\\${g},\\\${b},\\\${alpha})\\\`
+            ctx!.beginPath()
+            ctx!.arc(x, y, s, 0, Math.PI * 2)
+            ctx!.fill()
+          }
+        }
+
+        rafId = requestAnimationFrame(draw)
+      }
+
+      function handleMouseMove(e: MouseEvent) {
+        const rect = container!.getBoundingClientRect()
+        mouseRef.current.x = e.clientX - rect.left
+        mouseRef.current.y = e.clientY - rect.top
+      }
+
+      function handleMouseLeave() {
+        mouseRef.current.x = -9999
+        mouseRef.current.y = -9999
+      }
+
+      resize()
+      rafId = requestAnimationFrame(draw)
+
+      const ro = new ResizeObserver(resize)
+      ro.observe(container)
+      container.addEventListener("mousemove", handleMouseMove)
+      container.addEventListener("mouseleave", handleMouseLeave)
+
+      return () => {
+        cancelAnimationFrame(rafId)
+        ro.disconnect()
+        container.removeEventListener("mousemove", handleMouseMove)
+        container.removeEventListener("mouseleave", handleMouseLeave)
+      }
+    }, [gap, dotSize, color, activeColor, influence, maxScale])
+
+    return (
+      <div
+        ref={containerRef}
+        className={cn("relative overflow-hidden", className)}
+        {...props}
+      >
+        <canvas ref={canvasRef} className="absolute inset-0" />
+        {children && <div className="relative z-10">{children}</div>}
+      </div>
+    )
+  }
+)
+DotMatrix.displayName = "DotMatrix"
+
+export { DotMatrix }
+export type { DotMatrixProps }`
+
+const dotMatrixProps = [
+  {
+    name: "gap",
+    type: "number",
+    default: "24",
+    description: "Pixel spacing between dots.",
+  },
+  {
+    name: "dotSize",
+    type: "number",
+    default: "2",
+    description: "Base dot radius in pixels.",
+  },
+  {
+    name: "color",
+    type: "string",
+    default: '"currentColor"',
+    description: "Base dot color.",
+  },
+  {
+    name: "activeColor",
+    type: "string",
+    default: "same as color",
+    description: "Color of dots near the cursor.",
+  },
+  {
+    name: "influence",
+    type: "number",
+    default: "100",
+    description: "Pixel radius of the mouse effect.",
+  },
+  {
+    name: "maxScale",
+    type: "number",
+    default: "3",
+    description: "Maximum dot scale near the cursor.",
+  },
+  {
+    name: "className",
+    type: "string",
+    default: "-",
+    description: "Additional classes for the container.",
+  },
+]
+
+function DotMatrixDemo() {
+  return (
+    <div className="space-y-8">
+      <DotMatrix className="h-64 w-full rounded-xl border border-border">
+        <div className="flex h-64 items-center justify-center">
+          <h2 className="text-2xl font-bold text-foreground">Move your mouse</h2>
+        </div>
+      </DotMatrix>
+
+      <DotMatrix
+        color="#6b6b6b"
+        activeColor="#a855f7"
+        influence={120}
+        className="h-48 w-full rounded-xl border border-border"
+      >
+        <div className="flex h-48 items-center justify-center">
+          <p className="text-sm text-muted-foreground">Purple glow on hover</p>
+        </div>
+      </DotMatrix>
+
+      <DotMatrix
+        gap={40}
+        dotSize={3}
+        color="#6b6b6b"
+        activeColor="#22c55e"
+        maxScale={4}
+        className="h-48 w-full rounded-xl border border-border"
+      >
+        <div className="flex h-48 items-center justify-center">
+          <p className="text-sm text-muted-foreground">Larger gap, bigger dots</p>
+        </div>
+      </DotMatrix>
+    </div>
+  )
+}
+
+export default function DotMatrixPage() {
+  return (
+    <ComponentPage
+      name="Dot Matrix"
+      description="Interactive grid of dots that react to mouse proximity with scale and color changes."
+      code={usageCode}
+      cliCommand="npx shadcn@latest add https://wise-ui.com/r/dot-matrix.json"
+      manualSource={manualSource}
+      props={dotMatrixProps}
+    >
+      <DotMatrixDemo />
+    </ComponentPage>
+  )
+}

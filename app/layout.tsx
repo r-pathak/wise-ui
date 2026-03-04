@@ -14,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "wise-ui",
+  title: "wise-ui | component library",
   description: "Animated component library for React",
 };
 

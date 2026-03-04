@@ -6,27 +6,35 @@ import { ComponentPage } from "../../_components/component-page"
 
 const usageCode = `import { MovingGradientText } from "@/components/ui/moving-gradient-text"
 
-export default function Example() {
+export default function MovingGradientTextDemo() {
   return (
-    <div className="flex flex-col gap-6">
-      <h1 className="text-4xl font-bold">
-        Build with <MovingGradientText>wise-ui</MovingGradientText>
-      </h1>
-
-      <MovingGradientText
-        gradientFrom="#f97316"
-        gradientTo="#ef4444"
-        className="text-2xl font-semibold"
+    <div className="flex flex-col items-center gap-8 py-4">
+      <h2
+        className="text-4xl font-bold text-foreground sm:text-5xl"
+        style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
       >
-        Custom colors
-      </MovingGradientText>
+        Build with{" "}
+        <MovingGradientText>wise-ui</MovingGradientText>
+      </h2>
 
-      <p className="text-lg">
-        Inline gradient{" "}
+      <h3 className="text-3xl font-bold">
+        <MovingGradientText gradientFrom="#f97316" gradientTo="#ec4899">
+          Warm gradient text
+        </MovingGradientText>
+      </h3>
+
+      <h3 className="text-3xl font-bold">
+        <MovingGradientText gradientFrom="#3b82f6" gradientTo="#a855f7">
+          Cool gradient text
+        </MovingGradientText>
+      </h3>
+
+      <p className="max-w-md text-center text-lg text-muted-foreground">
+        You can use it{" "}
         <MovingGradientText speed={2} className="font-semibold">
-          with faster speed
+          inline within paragraphs
         </MovingGradientText>{" "}
-        in a paragraph.
+        to highlight key phrases.
       </p>
     </div>
   )

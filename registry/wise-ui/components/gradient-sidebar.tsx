@@ -306,7 +306,7 @@ function GradientSidebar({
       <div className="absolute right-0 top-0 h-full w-px bg-border" />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col overflow-y-auto overflow-x-hidden">
+      <div className="relative z-10 flex h-full flex-col overflow-y-auto overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {/* Header - wrapper always renders with fixed height to keep icons stable */}
         <div className="shrink-0 px-3 pt-4 pb-2 min-h-[48px] overflow-hidden">
           {!isCollapsed && header}
@@ -353,7 +353,10 @@ function GradientSidebar({
       {/* Collapse toggle */}
       <button
         onClick={toggleCollapse}
-        className="absolute right-2 top-3 z-20 flex size-6 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground"
+        className={cn(
+          "absolute top-3 z-20 flex size-6 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground",
+          isCollapsed ? "left-1/2 -translate-x-1/2" : "right-2"
+        )}
         aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
       >
         <motion.svg

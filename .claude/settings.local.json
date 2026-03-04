@@ -4,7 +4,16 @@
       "WebFetch(domain:www.reactbits.dev)",
       "Bash(npx next:*)",
       "Bash(npm run:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "WebFetch(domain:genius.com)",
+      "WebSearch",
+      "WebFetch(domain:www.lyricsondemand.com)",
+      "WebFetch(domain:lyricsfa.com)",
+      "WebFetch(domain:www.lyricsify.com)",
+      "WebFetch(domain:www.letras.mus.br)",
+      "WebFetch(domain:www.letras.com)",
+      "Bash(curl:*)",
+      "Bash(sips:*)"
     ]
   }
 }

@@ -12,29 +12,11 @@ import { useTheme } from "./theme-provider"
 
 const categories = [
   {
-    label: "Text",
+    label: "Data & Lists",
     items: [
-      { name: "editable-text", title: "Editable Text" },
-      { name: "moving-gradient-text", title: "Moving Gradient Text" },
-    ],
-  },
-  {
-    label: "Buttons",
-    items: [
-      { name: "moving-gradient-button", title: "Moving Gradient Button" },
-    ],
-  },
-  {
-    label: "Draggable Lists",
-    items: [
-      { name: "reorderable-list", title: "Reorderable List" },
       { name: "kanban-board", title: "Kanban Board" },
-    ],
-  },
-  {
-    label: "Navigation",
-    items: [
-      { name: "gradient-sidebar", title: "Gradient Sidebar" },
+      { name: "data-table", title: "Data Table" },
+      { name: "reorderable-list", title: "Reorderable List" },
     ],
   },
   {
@@ -42,6 +24,44 @@ const categories = [
     items: [
       { name: "metallic-lava", title: "Metallic Lava" },
       { name: "nebula", title: "Nebula" },
+      { name: "dot-matrix", title: "Dot Matrix" },
+    ],
+  },
+  {
+    label: "Cards",
+    items: [
+      { name: "spotlight-card", title: "Spotlight Card" },
+      { name: "tilt-card", title: "Tilt Card" },
+      { name: "border-beam", title: "Border Beam" },
+    ],
+  },
+  {
+    label: "Navigation",
+    items: [
+      { name: "gradient-sidebar", title: "Gradient Sidebar" },
+      { name: "dock", title: "Dock" },
+    ],
+  },
+  {
+    label: "Text",
+    items: [
+      { name: "editable-text", title: "Editable Text" },
+      { name: "moving-gradient-text", title: "Moving Gradient Text" },
+      { name: "scramble-text", title: "Scramble Text" },
+    ],
+  },
+  {
+    label: "Buttons",
+    items: [
+      { name: "moving-gradient-button", title: "Moving Gradient Button" },
+      { name: "magnetic-button", title: "Magnetic Button" },
+      { name: "pulse-button", title: "Pulse Button" },
+    ],
+  },
+  {
+    label: "Layout",
+    items: [
+      { name: "marquee", title: "Marquee" },
     ],
   },
 ]
@@ -57,6 +77,17 @@ function buildSections(): GradientSidebarSection[] {
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
             <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+        ),
+      },
+      {
+        id: "/guides/installation",
+        label: "Installation",
+        href: "/guides/installation",
+        icon: (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="4 17 10 11 4 5" />
+            <line x1="12" y1="19" x2="20" y2="19" />
           </svg>
         ),
       },
