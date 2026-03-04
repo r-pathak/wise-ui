@@ -24,7 +24,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem("wise-ui-theme");document.documentElement.classList.toggle("dark",t?t==="dark":true)})()`,
+          }}
+        />
+      </head>
       <body
         className={`${cormorantGaramond.variable} ${inter.variable} ${inter.className} antialiased`}
       >

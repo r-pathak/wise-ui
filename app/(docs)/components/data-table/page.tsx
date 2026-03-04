@@ -29,6 +29,14 @@ const employees: Employee[] = [
   { id: 8, name: "Elena Popov", role: "Backend Developer", department: "Engineering", status: "Active", startDate: "2023-01-09" },
   { id: 9, name: "Noah Kim", role: "Product Manager", department: "Product", status: "Remote", startDate: "2019-08-20" },
   { id: 10, name: "Zara Ahmed", role: "QA Engineer", department: "Engineering", status: "Active", startDate: "2022-05-17" },
+  { id: 11, name: "Oliver Grant", role: "Security Engineer", department: "Infrastructure", status: "Active", startDate: "2020-04-12" },
+  { id: 12, name: "Mia Chang", role: "Data Engineer", department: "Analytics", status: "Remote", startDate: "2021-09-30" },
+  { id: 13, name: "Ethan Brooks", role: "Mobile Developer", department: "Engineering", status: "Active", startDate: "2023-03-15" },
+  { id: 14, name: "Aisha Patel", role: "Design Lead", department: "Design", status: "Active", startDate: "2019-01-22" },
+  { id: 15, name: "Lucas Fernandez", role: "SRE", department: "Infrastructure", status: "On Leave", startDate: "2022-08-04" },
+  { id: 16, name: "Chloe Nguyen", role: "Technical Writer", department: "Product", status: "Remote", startDate: "2023-06-19" },
+  { id: 17, name: "Ryan Mitchell", role: "Platform Engineer", department: "Engineering", status: "Active", startDate: "2020-11-08" },
+  { id: 18, name: "Hannah Lee", role: "Analytics Lead", department: "Analytics", status: "Active", startDate: "2018-07-25" },
 ]
 
 const statusColors: Record<string, string> = {
