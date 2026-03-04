@@ -498,10 +498,10 @@ export function DataTable<T extends { id: string | number }>({
   }
 
   function toggleAll() {
-    if (selectedIds.size === displayData.length) {
+    if (selectedIds.size === sortedData.length) {
       setSelectedIds(new Set())
     } else {
-      setSelectedIds(new Set(displayData.map((r) => r.id)))
+      setSelectedIds(new Set(sortedData.map((r) => r.id)))
     }
   }
 
@@ -573,7 +573,7 @@ export function DataTable<T extends { id: string | number }>({
 
   // ── Render ─────────────────────────────────────────────────────────────────
   const allSelected =
-    displayData.length > 0 && selectedIds.size === displayData.length
+    sortedData.length > 0 && selectedIds.size === sortedData.length
 
   return (
     <div className={cn("w-full", className)}>

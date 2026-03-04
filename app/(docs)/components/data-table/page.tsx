@@ -111,7 +111,6 @@ export default function DataTableDemo() {
       searchKeys={["name", "role", "department", "status"]}
       selectable
       paginated
-      pageSize={5}
     />
   )
 }`
@@ -153,7 +152,6 @@ function DataTableDemo() {
       searchKeys={["name", "role", "department", "status"]}
       selectable
       paginated
-      pageSize={5}
     />
   )
 }
