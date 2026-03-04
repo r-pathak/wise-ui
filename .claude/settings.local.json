@@ -14,7 +14,9 @@
       "WebFetch(domain:www.letras.com)",
       "Bash(curl:*)",
       "Bash(sips:*)",
-      "WebFetch(domain:wise-ui.com)"
+      "WebFetch(domain:wise-ui.com)",
+      "Bash(npx shadcn@latest:*)",
+      "Bash(git:*)"
     ]
   }
 }
